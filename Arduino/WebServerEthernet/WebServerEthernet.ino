@@ -16,7 +16,7 @@
 byte mac[] = { 0x90, 0xA2, 0xDA, 0x0E, 0xFE, 0x40 };
 
 // IP address in case DHCP fails
-IPAddress ip(192,168,2,2);
+IPAddress ip(192,168,0,200);
 
 // Ethernet server
 EthernetServer server(80);
@@ -24,37 +24,34 @@ EthernetServer server(80);
 // Create aREST instance
 aREST rest = aREST();
 
-// Variables to be exposed to the API
-int temperature;
-int humidity;
+float valor;
+int temperatura;
 
 void setup(void)
 {
   // Start Serial
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   // Init variables and expose them to REST API
-  temperature = 24;
-  humidity = 40;
-  rest.variable("temperature",&temperature);
-  rest.variable("humidity",&humidity);
-
-  // Function to be exposed
-  rest.function("led",ledControl);
+  temperatura = 24;
+  rest.variable("temperatura",&temperatura);
 
   // Give name & ID to the device (ID should be 6 characters long)
-  rest.set_id("008");
-  rest.set_name("dapper_drake");
+  rest.set_id("007");
+  rest.set_name("standartNerd-ASW");
 
   // Start the Ethernet connection and the server
-  if (Ethernet.begin(mac) == 0) {
-    Serial.println("Failed to configure Ethernet using DHCP");
+//  if (Ethernet.begin(mac) == 0) {
+//    Serial.println("Failed to configure Ethernet using DHCP");
     // no point in carrying on, so do nothing forevermore:
     // try to congifure using IP address instead of DHCP:
     Ethernet.begin(mac, ip);
-  }
+//  }
+
+  delay(1000);
+
   server.begin();
-  Serial.print("server is at ");
+  Serial.print("server is at: ");
   Serial.println(Ethernet.localIP());
 
   // Start watchdog
@@ -68,14 +65,7 @@ void loop() {
   rest.handle(client);
   wdt_reset();
 
-}
-
-// Custom function accessible by the API
-int ledControl(String command) {
-
-  // Get state from command
-  int state = command.toInt();
-
-  digitalWrite(6,state);
-  return 1;
+  valor = analogRead(A0);
+  valor = (5.0*valor*100.0)/1024.0;
+  temperatura = valor;
 }
