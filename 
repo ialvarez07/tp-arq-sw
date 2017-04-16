@@ -1,0 +1,29 @@
+[33mcommit ad4fad8b6663e2d293bdecba7a5aa85ecfa5a7cd[m
+Author: Facu Parra <facundo.parra.94@gmail.com>
+Date:   Sun Apr 16 16:30:48 2017 -0300
+
+    Agregado firmware light Arduino
+
+[33mcommit 5922fa9996aad275bae2220abfa45680c2daf355[m
+Author: Facu Parra <facundo.parra.94@gmail.com>
+Date:   Wed Apr 12 20:09:24 2017 -0300
+
+    Modificado firmware del Arduino
+    
+    Se modifico el ejemplo de WebServer para que acepte peticiones segun lo que
+    necesitamos. Se usa llamando a 192.168.0.200/temperatura y devuelve un
+    JSON como el de la imagen PostManJSON.jpg
+
+[33mcommit 46dbe0bb7b0fc48513ea64ea7868eb3153459a52[m
+Author: Facu Parra <facundo.parra.94@gmail.com>
+Date:   Wed Apr 12 20:07:20 2017 -0300
+
+    Commit inicial de Arduino
+    
+    Agregada funcionalidad API REST basica segÃn ejemplos de internet
+
+[33mcommit c8f132056da4e670966a8a2b6e55ef891a293a20[m
+Author: Ignacio Alvarez <ignacio_dalvarez@hotmail.com>
+Date:   Wed Apr 5 18:50:54 2017 -0300
+
+    Iniciando el repositorio
