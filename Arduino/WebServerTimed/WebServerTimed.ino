@@ -22,7 +22,7 @@ void setup() {
   //}
   
   server.begin();
-  Serial.print("server is at ");
+  Serial.print("Server is at ");
   Serial.println(Ethernet.localIP());
 
   setSyncProvider( requestSync);  //set function to call when sync required
@@ -58,21 +58,26 @@ void loop(){
               client.println("Server: Arduino");
               client.println("Connection: close");
               client.println();
-              client.print("{\"temperatura\":23.2, \"time\":{");
+              client.print("{\"temperatura\":23.2,");
               time_t t = now();
-              client.print("\"dia\":");
-              client.print(day(t));
+              //client.print("\"time\":{");
+              client.print("\"time\":");
+              /*client.print("\"anio\":");
+              client.print(year(t));
               client.print(", \"mes\":");
               client.print(month(t));
+              client.print(", \"dia\":");
+              client.print(day(t));
               client.print(", \"hora\":");
               client.print(hour(t));
               client.print(", \"minutos\":");
               client.print(minute(t));
               client.print(", \"segundos\":");
               client.print(second(t));
-              client.print(", \"secs\":");
+              client.print(", \"secs\":");*/
               client.print(t);
-              client.println("}}");
+              //client.println("}}");
+              client.println("}");
               
               client.println();
             
@@ -105,6 +110,7 @@ void processSyncMessage() {
      pctime = Serial.parseInt();
      if( pctime >= DEFAULT_TIME) { // check the integer is a valid time (greater than Jan 1 2013)
        setTime(pctime); // Sync Arduino clock to the time received on the serial port
+       Serial.println("Tiempo Configurado");
      }
   }
 }

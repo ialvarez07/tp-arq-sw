@@ -13,6 +13,8 @@ public class Application implements ActionListener{
     
     private final Timer timer = new Timer(5000, this);
     
+    private int contador = 0;
+    
     public static void main(String[] args) {
         Grafica demo = Grafica.getInstance();
         demo.pack();
@@ -23,7 +25,7 @@ public class Application implements ActionListener{
     }
 
     public Application() {
-        timer.setInitialDelay(100000);
+        timer.setInitialDelay(1000);
         timer.start();
     }
     

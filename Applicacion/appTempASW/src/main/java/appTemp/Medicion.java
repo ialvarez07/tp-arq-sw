@@ -1,11 +1,13 @@
 package appTemp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Medicion {
     private float temperatura;
-    private Time time;
+    private long time;
+    private Date date;
 
     public Medicion() {
     }
@@ -18,18 +20,29 @@ public class Medicion {
         this.temperatura = temperatura;
     }
 
-    public Time getTime() {
+    public void setTime(long time) {
+        this.time = time;
+        long timeZoneOffset = - (1000 * 60 * 3);
+        setDate(new Date(time + timeZoneOffset));
+    }
+
+    public long getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public Date getDate() {
+        return date;
     }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
     @Override
     public String toString() {
         return "Medicion{" +
-                "temperatura=" + temperatura + 
-                ", time=" + time.toString();
+                "temperatura= " + temperatura +
+                ", date= " + date.toString() +
+                "}";
     }
 }
