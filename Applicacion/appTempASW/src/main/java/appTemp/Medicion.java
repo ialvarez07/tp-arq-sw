@@ -21,9 +21,10 @@ public class Medicion {
     }
 
     public void setTime(long time) {
-        this.time = time;
-        long timeZoneOffset = - (1000 * 60 * 3);
-        setDate(new Date(time + timeZoneOffset));
+        this.time = time*1000;
+        //long timeZoneOffset = - (1000 * 60 * 3);
+        long timeZoneOffset = 0;
+        setDate(new Date(this.time + timeZoneOffset));
     }
 
     public long getTime() {

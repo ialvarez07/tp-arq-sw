@@ -58,11 +58,15 @@ void loop(){
               client.println("Server: Arduino");
               client.println("Connection: close");
               client.println();
-              client.print("{\"temperatura\":23.2,");
+              
+              //client.print("{\"temperatura\":23.2,");
+              client.print("{\"temperatura\":");
+              client.print(medirTemperatura(A0));
+              
               time_t t = now();
-              //client.print("\"time\":{");
-              client.print("\"time\":");
-              /*client.print("\"anio\":");
+              client.print(", \"time\":");
+              /*/client.print(", \"time\":{");
+              client.print("\"anio\":");
               client.print(year(t));
               client.print(", \"mes\":");
               client.print(month(t));
@@ -114,3 +118,9 @@ void processSyncMessage() {
      }
   }
 }
+
+float medirTemperatura(int pinSensor) {
+  float temp = (5.0 * analogRead(pinSensor) * 100.0) / 1024;
+  return temp;
+}
+
