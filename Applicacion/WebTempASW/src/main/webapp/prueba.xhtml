@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>JSF Tutorial!</title>
+</h:head>
+
+<body>
+<h1>#{helloWorld.getMessage()}</h1>
+<h:form id="form">
+    <h:outputText id="txt_count" value="#{helloWorld.count}" />
+    <p:poll interval="3" listener="#{helloWorld.random}" update="txt_count" />
+    <p:spinner value="3"/>
+</h:form>
+</body>
+</html>
