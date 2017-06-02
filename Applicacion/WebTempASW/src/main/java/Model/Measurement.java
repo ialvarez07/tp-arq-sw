@@ -9,11 +9,20 @@ import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Measurement {
+    private Sensor sensor;
     private float temperature;
     private long time;
     private Date date;
 
     public Measurement() {
+    }
+
+    public Sensor getSensor() {
+        return sensor;
+    }
+
+    public void setSensor(Sensor sensor) {
+        this.sensor = sensor;
     }
 
     public float getTemperature() {

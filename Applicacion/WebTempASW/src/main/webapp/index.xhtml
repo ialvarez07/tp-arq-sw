@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>JSF Tutorial!</title>
+</h:head>
+
+<body>
+<h1>#{helloWorld.getMessage()}</h1>
+<h:form id="form">
+    <p:poll interval="3" listener="#{helloWorld.showTemperature}" update="dta_temps" />
+    <p:dataTable id="dta_temps" var="temp" value="#{helloWorld.dataAccess.temperaturesList}">
+        <p:column headerText="Sensor Id">
+            <h:outputText value="#{temp.sensor.id}" />
+        </p:column>
+        <p:column headerText="Temperature">
+            <h:outputText value="#{temp.temperature}" />
+        </p:column>
+        <p:column headerText="Date">
+            <h:outputText value="#{temp.date}" />
+        </p:column>
+    </p:dataTable>
+</h:form>
+</body>
+</html>
