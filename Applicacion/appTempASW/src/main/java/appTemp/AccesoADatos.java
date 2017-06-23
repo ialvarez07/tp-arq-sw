@@ -19,10 +19,10 @@ public class AccesoADatos implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         RestTemplate restTemplate = new RestTemplate();
-        //Medicion medicion = restTemplate.getForObject("http://192.168.0.200/temperatura", Medicion.class);
-        Medicion medicion = new Medicion();
+        Medicion medicion = restTemplate.getForObject("http://192.168.0.200/temperatura", Medicion.class);
+        /*Medicion medicion = new Medicion();
         medicion.setTemperatura((float) (Math.random()*10+10));
-        medicion.setTime(System.currentTimeMillis()/1000);
+        medicion.setTime(System.currentTimeMillis()/1000);*/
         
         log.info(medicion.toString());
         Grafica.getInstance().addData(medicion);

@@ -8,11 +8,12 @@
 </h:head>
 
 <body>
-<h1>#{helloWorld.getMessage()}</h1>
+<h1>#{measurementBean.getMessage()}</h1>
 <h:form id="form">
-    <p:poll interval="3" listener="#{helloWorld.showTemperature}" update="dta_temps" />
-    <p:dataTable id="dta_temps" var="temp" value="#{helloWorld.dataAccess.temperaturesList}">
-        <p:column headerText="Sensor Id">
+    <p:poll interval="3" listener="#{measurementBean.showTemperature}" update="dta_temps" />
+    <p:dataTable id="dta_temps" var="temp"
+                 value="#{measurementBean.dataReceiver.temperaturesList}">
+        <p:column headerText="com.tpasw.Model.Sensor Id">
             <h:outputText value="#{temp.sensor.id}" />
         </p:column>
         <p:column headerText="Temperature">
